@@ -17,7 +17,7 @@ public class Product {
         return code;
     }
     public boolean areTheyEqual(Product p) {
-        return name == p.name;
+        return name.equals(p.name);
     }
 
     public boolean areTheyEqualRestricted(Product p) {
