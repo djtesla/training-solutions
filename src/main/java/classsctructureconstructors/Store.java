@@ -13,6 +13,14 @@ public class Store {
 
     }
 
+    @Override
+    public String toString() {
+        return "Store{" +
+                "product='" + product + '\'' +
+                ", stock=" + stock +
+                '}';
+    }
+
     public void dispatch (int stock) {
         this.stock = this.stock - stock;
 
