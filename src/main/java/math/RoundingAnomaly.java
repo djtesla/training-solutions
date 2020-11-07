@@ -11,13 +11,13 @@ public class RoundingAnomaly {
     public double[] randomNumbers(int size, double max, int scale) {
 
         double[] randomNumbers = new double[size];
-        double multipilier = Math.pow(10, scale);
+        double multiplier = Math.pow(10, scale);
 
         for (int i = 0; i < size; i++ ) {
 
             double randomNumber = RND.nextDouble();
-            randomNumber = Math.round(randomNumber * multipilier * max);
-            randomNumber = randomNumber / multipilier;
+            randomNumber = Math.round(randomNumber * multiplier * max);
+            randomNumber = randomNumber / multiplier;
 
             // System.out.println(randomNumber);
             randomNumbers [i] = randomNumber;
