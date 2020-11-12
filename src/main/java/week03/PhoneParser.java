@@ -1,4 +1,6 @@
-package gyakorlás;
+package week03;
+
+import gyakorlás.Phone;
 
 public class PhoneParser {
 
