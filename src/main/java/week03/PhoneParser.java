@@ -1,7 +1,5 @@
 package week03;
 
-import gyakorlás.Phone;
-
 public class PhoneParser {
 
 
@@ -19,10 +17,10 @@ public class PhoneParser {
 
                 return new Phone(pref, num);
             }
-            return new Phone(0, 0);
+
         }
 
-
+        return new Phone(0, 0);
     }
 
     public static void main(String[] args) {
