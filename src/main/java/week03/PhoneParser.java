@@ -13,7 +13,7 @@ public class PhoneParser {
 
             if (number.substring(i, i + 1).equals("-")) {
                 pref = Integer.parseInt(number.substring(0, i));
-                num = Integer.parseInt(number.substring(i, number.length() - 1));
+                num = Integer.parseInt(number.substring(i+1, number.length()));
 
                 return new Phone(pref, num);
             }
@@ -26,7 +26,15 @@ public class PhoneParser {
     public static void main(String[] args) {
 
         PhoneParser phoneParser = new PhoneParser();
-        System.out.println(phoneParser.parsePhone("20-8105667"));
+        Phone phone = phoneParser.parsePhone("20-8105667");
+
+        System.out.println(phone.getPrefix());
+        System.out.println(phone.getNumber());
+
+
+
+
+
 
 
 
