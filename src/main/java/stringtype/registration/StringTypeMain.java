@@ -1,4 +1,4 @@
-package stringtye;
+package stringtype.registration;
 
 public class StringTypeMain {
     public static void main(String[] args) {
