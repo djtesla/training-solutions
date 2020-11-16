@@ -12,13 +12,15 @@ public class StringScanner {
         int sum = 0;
         try (Scanner scanner = new Scanner(intString)) {
 
-            if (!isEmpty(delimiter)) {
+            if (delimiter == null || "".equals(delimiter) || isEmpty(intString)) {
+                throw new IllegalArgumentException("Incorrect parameter string!");
+            } else {
                 scanner.useDelimiter(delimiter);
             }
 
 
             while (scanner.hasNext()) {
-                if (delimiter.isEmpty() || !scanner.hasNextInt()) {
+                if (!scanner.hasNextInt()) {
                     throw new IllegalArgumentException("Incorrect parameter string!");
                 }
                 sum += scanner.nextInt();
@@ -61,6 +63,10 @@ public class StringScanner {
     }
 
     public String filterLinesWithWordOccurrences(String text, String word) {
+
+        if (isEmpty(text) || isEmpty(word)) {
+            throw new IllegalArgumentException("Incorrect parameter string!");
+        }
         String lines = "";
         try (Scanner scanner = new Scanner(Path.of("szöveg.txt"))) {
 

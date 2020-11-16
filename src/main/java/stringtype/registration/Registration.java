@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Registration {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        userValidator uservalidator = new userValidator();
+        UserValidator uservalidator = new UserValidator();
 
         System.out.println("Kérem a felhasználó nevet: ");
         String name = scanner.nextLine();

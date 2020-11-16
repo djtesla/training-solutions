@@ -1,6 +1,6 @@
 package stringtype.registration;
 
-public class userValidator {
+public class UserValidator {
 
     public boolean isValidUsername (String username) {
         return username != null && !"".equals(username);

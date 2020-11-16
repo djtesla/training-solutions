@@ -33,10 +33,12 @@ public class NameChanger {
 
         fullName = newFullName;
 
-
-
-
 }
+
+    public boolean isTheSameTest() {
+
+        return true;
+    }
 
     public static void main(String[] args) {
         NameChanger nameChanger = new NameChanger("Kiss János");
