@@ -1,0 +1,4 @@
+Ez az első sor.
+Ez a sor tartalmazza a parádé szót.
+De ebben a sorban nincsen benne.
+Az aztán nagy parádé, ha ebben sorban is benne van.

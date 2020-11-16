@@ -11,21 +11,30 @@ class NameChangerTest {
 
     public void constructorTest () {
 
-        NameChanger nameChanger = new NameChanger("Kiss János");
+        //NameChanger nameChanger = new NameChanger("");
 
-     assertEquals("Kiss János", nameChanger.getFullName());
+     assertThrows(IllegalArgumentException.class,() -> new NameChanger(""));
+
     }
 
     @Test
     public void testChangeFirstName () {
 
-        NameChanger nameChanger = new NameChanger("Kiss János");
+        NameChanger nameChanger = new NameChanger(null);
 
         nameChanger.changeFirstName("Géza");;
 
         assertEquals("Kiss Géza",nameChanger.getFullName() );
 
 
+    }
+
+    @Test
+    public void istheSametest () {
+
+        NameChanger nameChanger = new NameChanger(null);
+
+        assertTrue(nameChanger.isTheSameTest());
     }
 
 }
