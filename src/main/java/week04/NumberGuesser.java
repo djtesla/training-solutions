@@ -16,12 +16,13 @@ public class NumberGuesser {
 
 
 
+    String tip = "";
     int tipNumber = 0;
     int i =0;
         do {
 
             System.out.println("Írd be tipped: ");
-            tipNumber = scanner.nextInt();
+            tipNumber =  Integer.parseInt(scanner.nextLine().trim());
 
             if (tipNumber > randomNumber) {
                 System.out.println("A szám amire gondoltam, a tippednél kisebb.");
@@ -32,14 +33,14 @@ public class NumberGuesser {
                 i++;
             }
 
-            }  while (tipNumber != randomNumber || i > 5 ) ;
+            }  while (tipNumber != randomNumber && !(i > 10) ) ;
 
 
-        if (i > 6) {
+        if (i > 10) {
 
-            System.out.println("Nem találtad ki 5 tipből. A Játék sajnos véget ért.");
+            System.out.println("Nem találtad ki 5 tipből. A szám amire gondoltam" + randomNumber + ".");
         }    else {
-            System.out.println("Eltaláltad, gratulálok! A szám, amire gondoltam: " + randomNumber);
+            System.out.println("Eltaláltad, gratulálok! A szám, amire gondoltam: " + randomNumber + ".");
         }
         }
     }
