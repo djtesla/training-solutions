@@ -6,7 +6,20 @@ import java.util.Scanner;
 public class NumberGuesser {
 
 
+    public long getFactorial(int n) {
+        if(n > 1) {
+            long solution = getFactorial(n - 1);
+            return n * solution;
+        } else {
+            return 1;
+        }
+    }
+
+
     public static void main(String[] args) {
+
+        NumberGuesser n = new NumberGuesser();
+        System.out.println(n.getFactorial(4));
 
         Random rnd = new Random();
         int randomNumber = rnd.nextInt(101);
@@ -22,7 +35,7 @@ public class NumberGuesser {
         do {
 
             System.out.println("Írd be tipped: ");
-            tipNumber =  Integer.parseInt(scanner.nextLine().trim());
+            tipNumber =  Integer.parseInt(scanner.nextLine());
 
             if (tipNumber > randomNumber) {
                 System.out.println("A szám amire gondoltam, a tippednél kisebb.");
@@ -43,6 +56,10 @@ public class NumberGuesser {
             System.out.println("Eltaláltad, gratulálok! A szám, amire gondoltam: " + randomNumber + ".");
         }
         }
+
+
+
+
     }
 
 
