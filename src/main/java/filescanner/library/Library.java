@@ -16,7 +16,7 @@ public class Library {
 
     public void loadFromFile () {
 
-        try(Scanner scanner = new Scanner(Library.class.getResourceAsStream("/books.csv"))) {
+        try(Scanner scanner = new Scanner(Library.class.getResourceAsStream("/src/test/books.csv"))) {
 
             scanner.useDelimiter(";|(\r\n)|\n");
 

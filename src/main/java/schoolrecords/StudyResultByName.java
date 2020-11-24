@@ -10,6 +10,13 @@ public class StudyResultByName {
         this.studyAverage = studyAverage;
     }
 
+
+    @Override
+    public String toString() {
+        return
+                studentName + "-" + studyAverage;
+    }
+
     public String getStudentName() {
         return studentName;
     }

@@ -133,7 +133,8 @@ public class SchoolRecordsController {
             case 2: {
                 System.out.println("Kérem a diák nevét:");
                 String name = scanner.nextLine();
-                controller.classRecords.findStudentByName(name);
+                Student student = controller.classRecords.findStudentByName(name);
+                System.out.println(student);
                 break;
             }
 
@@ -176,10 +177,12 @@ public class SchoolRecordsController {
             }
             case 6: {
                 System.out.println("Az osztályátlag: " + controller.classRecords.calculateClassAverage() + ".");
+                break;
 
             }
             case 7: {
 
+                System.out.println("Kérem a tantárgyat:");
                 String subjectName = scanner.nextLine();
                 System.out.println(subjectName + " osztályátlag: " +
                         controller.classRecords.calculateClassAverageBySubject(controller.getSubjectByName(subjectName)) + ".");
@@ -201,7 +204,7 @@ public class SchoolRecordsController {
                 String name = scanner.nextLine();
                 System.out.println("Kérem a tárgy nevét:");
                 String subjectName = scanner.nextLine();
-                System.out.println(name + " átlaga: " +
+                System.out.println(name + " átlaga (" + subjectName + "):" +
                         controller.classRecords.findStudentByName(name).calculateSubjectAverage(controller.getSubjectByName(subjectName)) + ".");
                 break;
             }
