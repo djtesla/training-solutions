@@ -7,12 +7,14 @@ public class ChangeLetter {
 
     public static String changeVowels(String text) {
 
+
+
         List<Character> englishVowels = Arrays.asList('a', 'e','i', 'o', 'u');
 
 
 
         for(int i = 0; i < text.length(); i++) {
-            if (englishVowels.contains(text.charAt(i))) {
+            if (englishVowels.contains(text.toLowerCase().charAt(i))) {
 
                 text = text.replace(text.charAt(i), '*');
 
