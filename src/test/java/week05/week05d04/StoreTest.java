@@ -8,7 +8,7 @@ class StoreTest {
 
 
     @Test
-    public void StoreTestLocalDates () {
+    public void TestAddProduct () {
 
         Store store = new Store();
         store.addProduct(new Product("kenyér", 2020, 11, 25));
@@ -16,7 +16,9 @@ class StoreTest {
         store.addProduct(new Product("kifli", 2020, 11, 27));
         store.addProduct(new Product("zsömle", 2020, 11, 2));
 
-        assertEquals(3, store.getNumberOfExpired());
+        assertEquals(1, store.getProducts().size());
+        assertTrue(store.addProduct(new Product("lekvár", 2020, 11, 27)));
+        assertFalse(store.addProduct(new Product("lekvár", 2020, 11, 27)));
     }
 
 

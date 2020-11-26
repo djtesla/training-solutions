@@ -5,23 +5,22 @@ import java.time.LocalDate;
 public class Product {
 
     private String name;
-    private LocalDate localDate;
+    private LocalDate expirationDate;
 
     public Product(String name, int year, int month, int day) {
         this.name = name;
-        localDate = LocalDate.of(year, month, day);
+        expirationDate = LocalDate.of(year, month, day);
     }
 
     public String getName() {
         return name;
     }
 
-    public LocalDate getLocalDate() {
-        return localDate;
+
+    public boolean isValid() {
+        return expirationDate.isAfter(LocalDate.now());
     }
 }
-
-
 
 /*
     Mai feladat Junior/Mid-Level:
@@ -32,4 +31,5 @@ public class Product {
         Legyen mindkettőhöz getter metódus.
         Készíts egy week05d04.Store osztályt, melyben van egy Productokat tároló lista. Legyen benne egy addProduct(Product) metódus.
         Bónusz: Legyen benne egy getNumberOfExpired() metódus ami visszaadja a lejárt termékek számát. Használd a LocalDate.now() és az
-        isBefore() metódusokat.*/
+        isBefore() metódusokat.
+        + ne adja hozzá ha lejárt vagy már szerepel*/

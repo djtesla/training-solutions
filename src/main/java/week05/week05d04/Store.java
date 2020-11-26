@@ -1,6 +1,5 @@
 package week05.week05d04;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,28 +8,30 @@ public class Store {
     private List<Product> products = new ArrayList<>();
 
 
-    public void addProduct(Product productToAdd) {
-
-        for (Product product : products) {
-
-            if (!product.getName().equals(productToAdd.getName()) &&
-                    !productToAdd.getLocalDate().isBefore(LocalDate.now()));
-            products.add((product));
-        }
-        System.out.println("Lejárt a termék vagy már szerepel a listában!");
-
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public int getNumberOfExpired() {
-        int i = 0;
-        for (Product product : products) {
+    public boolean addProduct(Product productToAdd) {
 
-            if (product.getLocalDate().isBefore(LocalDate.now())) {
-                i++;
+        if (!isIncluded(productToAdd) && productToAdd.isValid()) {
+                products.add(productToAdd);
+                return true;
             }
-
-        }
-        return i;
+        return false;
     }
+
+
+    private boolean isIncluded(Product productToAdd) {
+
+        for (Product product : products) {
+            if (product.getName().equals(productToAdd.getName())) {
+                return true;
+            }
+        }
+        return false;
+
+    }
+
 }
 
