@@ -17,7 +17,7 @@ class ListSelectorTest {
 
     @Test
     public void concatenateEverySecond() {
-        assertEquals("[almakörte]", new ListSelector().concatenateEverySecond(Arrays.asList(
+        assertEquals("[alma,körte]", new ListSelector().concatenateEverySecond(Arrays.asList(
                 "alma", "barack", "körte", "szilva")));
     }
 

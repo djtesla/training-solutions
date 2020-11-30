@@ -12,9 +12,9 @@ public class ListSelector {
         }
 
         if (elements.size() != 0) {
-            concatenatedText.append("[");
-            for (int i = 0; i < elements.size(); i+=2) {
-            concatenatedText.append(elements.get(i));
+            concatenatedText.append("[" + elements.get(0));
+            for (int i = 2; i < elements.size(); i+=2) {
+            concatenatedText.append("," + elements.get(i));
             }
             concatenatedText.append("]");
         }
