@@ -1,4 +1,4 @@
-package week06.week06d02;
+package week06d02;
 
 import org.junit.jupiter.api.Test;
 import week06d02.Category;
