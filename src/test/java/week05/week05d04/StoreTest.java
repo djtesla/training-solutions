@@ -1,6 +1,8 @@
 package week05.week05d04;
 
 import org.junit.jupiter.api.Test;
+import week05d04.Product;
+import week05d04.Store;
 
 import static org.junit.jupiter.api.Assertions.*;
 

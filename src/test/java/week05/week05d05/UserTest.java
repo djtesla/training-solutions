@@ -1,6 +1,7 @@
 package week05.week05d05;
 
 import org.junit.jupiter.api.Test;
+import week05d05.User;
 
 import static org.junit.jupiter.api.Assertions.*;
 

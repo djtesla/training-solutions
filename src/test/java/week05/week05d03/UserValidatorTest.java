@@ -1,8 +1,8 @@
 package week05.week05d03;
 
 import org.junit.jupiter.api.Test;
-import week05.week05d03.User;
-import week05.week05d03.UserValidator;
+import week05d03.User;
+import week05d03.UserValidator;
 
 import java.util.Arrays;
 

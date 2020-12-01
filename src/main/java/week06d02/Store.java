@@ -1,6 +1,5 @@
-package week06.week06d02;
+package week06d02;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Store {

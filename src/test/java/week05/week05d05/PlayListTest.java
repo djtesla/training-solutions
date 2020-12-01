@@ -1,6 +1,8 @@
 package week05.week05d05;
 
 import org.junit.jupiter.api.Test;
+import week05d05.PlayList;
+import week05d05.Song;
 
 import java.util.Arrays;
 

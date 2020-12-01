@@ -1,7 +1,7 @@
 package week06.week06d01;
 
 import org.junit.jupiter.api.Test;
-import week06.week06d01.SeparatedSum;
+import week06d01.SeparatedSum;
 
 import static org.junit.jupiter.api.Assertions.*;
 
