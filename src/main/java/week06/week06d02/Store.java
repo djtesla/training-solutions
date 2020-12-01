@@ -16,7 +16,7 @@ public class Store {
 
         for (Product product: products) {
 
-            if (product.getCategory().name().equals(category.name())) {
+            if (product.getCategory().name() == category.name()) {
                 i++;
             }
         }
