@@ -5,13 +5,14 @@ import java.util.List;
 
 public class Store {
 
-    private List<Product> products = new ArrayList<>();
+    private List<Product> products;
 
     public Store(List<Product> products) {
         this.products = products;
     }
 
-    public int getProductByCategoryName(Category category) {
+
+    public CategoryCounter getProductByCategoryName(Category category) {
         int i =0;
 
         for (Product product: products) {
@@ -20,7 +21,7 @@ public class Store {
                 i++;
             }
         }
-       return i;
+       return new CategoryCounter(category,i);
     }
 
 }

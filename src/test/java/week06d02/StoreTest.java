@@ -18,7 +18,7 @@ class StoreTest {
 
     @Test
     public void testGetProductByCategoryName () {
-        assertEquals(2, store.getProductByCategoryName(Category.BAKEDGOODS));
+        assertEquals(2, store.getProductByCategoryName(Category.BAKEDGOODS).getQuantity());
     }
 
 }
