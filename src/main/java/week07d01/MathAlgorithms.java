@@ -11,11 +11,11 @@ public class MathAlgorithms {
 
         for (int i = 2; i <= x / 2; i++) {
 
-            if (x % i == 0) {
+            if (x % i == 0 ) {
                 return false;
             }
         }
-        return true;
+        return x > 3;
     }
 }
 
