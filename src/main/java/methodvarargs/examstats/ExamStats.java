@@ -28,6 +28,7 @@ public class ExamStats {
     }
 
     private boolean isEmpty(int[] results) {
+
         return results == null || results.length == 0;
     }
 

@@ -1,6 +1,9 @@
-package methodstructure.bmi;
+package methodstructure;
 
 
+import methodstructure.bmi.BmiCategory;
+import methodstructure.bmi.BodyMass;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 
@@ -37,7 +40,7 @@ public class BodyMassTest {
         BodyMass bmUnder = new BodyMass(SAMPLE_MASS_UNDER, SAMPLE_HEIGHT_UNDER);
         BodyMass bmOver = new BodyMass(SAMPLE_MASS_OVER, SAMPLE_HEIGHT_OVER);
 
-        assertEquals(BmiCategory.NORMAL, bm.body());
+        Assertions.assertEquals(BmiCategory.NORMAL, bm.body());
         assertEquals(BmiCategory.UNDERWEIGHT, bmUnder.body());
         assertEquals(BmiCategory.OVERWEIGHT, bmOver.body());
     }

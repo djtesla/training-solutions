@@ -38,7 +38,8 @@ public class BodyMass {
     }
 
 
-    boolean isThinnerThan(BodyMass bodyMass) {
+    public boolean isThinnerThan(BodyMass bodyMass) {
+
         return bodyMassIndex() < bodyMass.bodyMassIndex();
     }
 
