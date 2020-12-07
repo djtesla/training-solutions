@@ -3,15 +3,13 @@ package week07d01;
 public class MathAlgorithms {
 
 
-    public static boolean isPrime (int x) {
+    public static boolean isPrime(int x) {
 
         if (x < 0) {
             throw new IllegalArgumentException("Number cannot be negative!");
         }
 
-        int numberOfDividers = 0;
-
-        for (int i = 2; i <= x/2; i++) {
+        for (int i = 2; i <= x / 2; i++) {
 
             if (x % i == 0) {
                 return false;
