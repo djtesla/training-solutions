@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class SimpleDateTest {
 
 
-   /* @Test
+    @Test
     public void incorrectParameterShouldThrowExceptionNotALeapYear() throws IllegalArgumentException {
         SimpleDate sd = new SimpleDate();
 
@@ -53,9 +53,11 @@ public class SimpleDateTest {
     @Test
     public void testSetDate() {
         SimpleDate date = new SimpleDate();
+
         date.setDate(2016, 2, 29);
+
         assertEquals(2016, date.getYear());
         assertEquals(2, date.getMonth());
         assertEquals(29, date.getDay());
-    }*/
+    }
 }
