@@ -13,6 +13,13 @@ class DigitSumTest {
 
     }
 
+    @Test
+    public void digitSumTest2 () {
+
+        assertEquals(10, new DigitSum().sumOfDigits(1234));
+
+    }
+
 
 
 }

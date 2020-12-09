@@ -11,6 +11,12 @@ public class Human {
         this.age = age;
     }
 
+    public Human() {
+
+
+    }
+
+
 
 
     public String getName() {
@@ -31,5 +37,17 @@ public class Human {
 
     public static int getDefaultFreeTime() {
         return DEFAULT_FREE_TIME;
+    }
+    public  int getFreeTime() {
+        return DEFAULT_FREE_TIME;
+    }
+
+    public static void main(String[] args) {
+
+        Human human = new Trainer("2", 10,null);
+
+
+
+
     }
 }

@@ -35,7 +35,7 @@ public class Trooper {
             throw new IllegalArgumentException("Position cannot be null!");
         }
 
-        position = new Position(target.getPosX(), target.getPosY());
+        position = target;
     }
 
     public double distanceFrom(Position target) {
