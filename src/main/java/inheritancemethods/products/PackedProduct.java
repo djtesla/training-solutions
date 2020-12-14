@@ -1,8 +1,9 @@
 package inheritancemethods.products;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
-public class PackedProduct extends Product{
+public class PackedProduct extends Product {
 
     private int packingUnit;
     private BigDecimal weightOfBox;
@@ -13,14 +14,24 @@ public class PackedProduct extends Product{
         this.weightOfBox = weightOfBox;
     }
 
+    public int getPackingUnit() {
+        return packingUnit;
+    }
+
+    public BigDecimal getWeightOfBox() {
+        return weightOfBox;
+    }
+
     @Override
     public BigDecimal totalWeight(int pieces) {
 
-        return new BigDecimal(0);
+
+        int numberOfBoxes = pieces % packingUnit == 0 ? pieces / packingUnit : pieces / packingUnit + 1;
+
+        BigDecimal box = weightOfBox.multiply(new BigDecimal(Integer.toString(numberOfBoxes))).setScale(getNumberOfDecimals(), RoundingMode.HALF_UP);
+
+        return super.totalWeight(pieces).add(box).setScale(getNumberOfDecimals(), RoundingMode.HALF_UP);
     }
-
-
-
 
 
 }

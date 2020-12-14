@@ -1,6 +1,7 @@
 package inheritancemethods.products;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Product {
 
@@ -16,12 +17,24 @@ public class Product {
 
 
     public Product(String name, BigDecimal unitWeight) {
-        this.name = name;
-        this.unitWeight = unitWeight;
+        this(name, unitWeight, 2);
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public BigDecimal getUnitWeight() {
+        return unitWeight;
+    }
+
+    public int getNumberOfDecimals() {
+        return numberOfDecimals;
+    }
+
 
     public BigDecimal totalWeight(int pieces) {
 
-        return new BigDecimal(0);
+        return unitWeight.multiply(new BigDecimal(String.valueOf(pieces))).setScale(numberOfDecimals, RoundingMode.HALF_UP);
     }
 }

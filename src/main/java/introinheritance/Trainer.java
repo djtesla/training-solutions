@@ -3,6 +3,7 @@ package introinheritance;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Trainer extends Human {
 
     private String name;
@@ -49,9 +50,16 @@ public class Trainer extends Human {
         return super.getName();
     }
 
+    @Override
+    public void work() {
+        System.out.println("hello");
+    }
+
     public static void main(String[] args) {
 
-        Trainer trainer = new Trainer("", 2, null);
+        Human trainer = new Trainer("", 2, null);
+
+        trainer.work();
 
 
 

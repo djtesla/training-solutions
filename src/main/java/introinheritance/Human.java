@@ -1,6 +1,6 @@
 package introinheritance;
 
-public class Human {
+public abstract class Human {
 
     public static final int DEFAULT_FREE_TIME = 4;
     private String name;
@@ -13,8 +13,9 @@ public class Human {
 
     public Human() {
 
-
     }
+
+    public abstract void work ();
 
 
 

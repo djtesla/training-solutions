@@ -1,0 +1,26 @@
+package interfaces.animal;
+
+import java.util.List;
+
+public class Zoo{
+
+    private List<Animal> animals;
+
+    public Zoo(List<Animal> animals) {
+        this.animals = animals;
+    }
+
+
+    public int getNumberOfLegs() {
+        int numberOfLegs = 0;
+        for (Animal animal : animals) {
+            numberOfLegs += animal.getNumberOfLegs();
+        }
+        return numberOfLegs;
+    }
+
+    public int getNumberOfAnimals() {
+        return animals.size();
+
+    }
+}
