@@ -7,14 +7,20 @@ public class Sultan {
 
     private List<Door> doors = new ArrayList<>();
 
+
+
     public void add(Door door) {
         doors.add(door);
     }
 
+
+
     public List<Integer> openDoors() {
 
         for (Door door : doors) {
+
             for (int days = 1; days <= 100; days++) {
+
                 changeNumberOfRotates(door, days);
             }
         }
@@ -22,12 +28,15 @@ public class Sultan {
 
     }
 
+
+
     public void changeNumberOfRotates(Door door, int days) {
 
         if (door.getNumber() % days == 0) {
             door.setNumberOfRotates(door.getNumberOfRotates() + 1);
         }
     }
+
 
 
     public List<Integer> getOpenDoors () {
