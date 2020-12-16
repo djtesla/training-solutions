@@ -12,11 +12,11 @@ public class Lottery {
         List<Integer> numbers = new ArrayList<>();
         Random rnd = new Random();
 
-        for (int i =1; i <=5; i++) {
-            int number = rnd.nextInt(91);
+        for (int i = 1; i <= 5; i++) {
+            int number = rnd.nextInt(90) + 1;
 
             while (!isNumberAddable(number, numbers)) {
-                number = rnd.nextInt(101);
+                number = rnd.nextInt(90) + 1;
             }
             numbers.add(number);
         }
@@ -36,12 +36,6 @@ public class Lottery {
     }
 
 }
-
-
-
-
-
-
 
 
  /*   Mai Junior/Mid-level feladat:
