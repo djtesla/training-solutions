@@ -1,6 +1,6 @@
-package isahasa.htmlmarchaller.trainer;
+package isahasa.trainer;
 
-public class WorkStub implements Work{
+public class WorkStub implements Work {
 
     private boolean called;
 

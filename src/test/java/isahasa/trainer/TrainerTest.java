@@ -1,4 +1,4 @@
-package isahasa.htmlmarchaller.trainer;
+package isahasa.trainer;
 
 import org.junit.jupiter.api.Test;
 
