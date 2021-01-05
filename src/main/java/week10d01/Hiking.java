@@ -9,13 +9,13 @@ public class Hiking {
 
         double sum = 0;
 
-        for (int i = 0; i < heights.size(); i++) {
+        for (int i = 1; i < heights.size(); i++) {
 
-            if (heights.get(i) < 0) {
-                throw new IllegalArgumentException("heights cannot be negative!");
+            if (heights == null) {
+                throw new IllegalArgumentException("invalid parameters!");
             }
 
-            if (i > 0 && heights.get(i) > heights.get(i-1)) {
+            if (heights.get(i) > heights.get(i-1)) {
                 sum += heights.get(i) - heights.get(i-1);
 
             }

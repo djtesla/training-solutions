@@ -60,12 +60,6 @@ public class Trainer extends Human {
         Human trainer = new Trainer("", 2, null);
 
         trainer.work();
-
-
-
-
-
     }
-
 
 }
