@@ -1,11 +1,29 @@
 package exam02;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ArraySelector {
+
+    public String selectEvens (int[] numbers) {
+
+        List<Integer> elementsWithEvenIndex = new ArrayList<>();
+
+        for (int i = 0; i < numbers.length; i++) {
+            if (i % 2 == 0) {
+                elementsWithEvenIndex.add(numbers[i]);
+            }
+        }
+
+        if (elementsWithEvenIndex.size() == 0) {
+            return "";
+        } else {
+            return elementsWithEvenIndex.toString();
+        }
+    }
 
 
 }
-
-
 
 /*
 Tömbök
