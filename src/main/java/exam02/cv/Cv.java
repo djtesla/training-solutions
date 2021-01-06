@@ -45,7 +45,7 @@ public class Cv {
 
         for (int i = 0; i < skills.size(); i++) {
             if (skills.get(i).getName().equals(name)) {
-                return i + 1;
+                return skills.get(i).getLevel();
             }
         }
 

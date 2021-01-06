@@ -7,6 +7,10 @@ public class Skill {
 
 
     public Skill(String description, int level) {
+
+        if (level < 1 || level > 5) {
+            throw new IllegalArgumentException("level must be between 1 to 5!");
+        }
         this.description = description;
         this.level = level;
     }
