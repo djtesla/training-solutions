@@ -13,14 +13,16 @@ public class Calculator {
         sortedNumbers.add(arr[0]);
 
         for (int i = 1; i < arr.length; i++) {
-            addNumberToSpecifiedIndex(sortedNumbers, arr.length, arr[i]);
+            addNumberToSpecifiedIndex(sortedNumbers, arr[i]);
         }
+
+        System.out.println(sortedNumbers);
+
         return getSumOfFirstFourElements(sortedNumbers);
     }
 
 
-
-    public void addNumberToSpecifiedIndex(List<Integer> sortedNumbers, int arrLength, int arrElement) {
+    public void addNumberToSpecifiedIndex(List<Integer> sortedNumbers, int arrElement) {
 
         for (int j = 0; j < sortedNumbers.size(); j++) {
             if (arrElement <= sortedNumbers.get(j)) {
@@ -30,7 +32,6 @@ public class Calculator {
         }
         sortedNumbers.add(arrElement);
     }
-
 
 
     public int getSumOfFirstFourElements(List<Integer> sortedNumbers) {

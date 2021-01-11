@@ -1,24 +1,25 @@
 package gyakorlás;
 
 
-import java.time.LocalDateTime;
+public class Employee {
+    private double s;
 
-public class Employee implements Audited {
-
-    private String name;
-    private LocalDateTime createdAt;
-
-    public Employee(String name, LocalDateTime createdAt) {
-        this.name = name;
-        this.createdAt = createdAt;
+    public Employee(double salary) {
+        this.s = s;
     }
 
-    public String getName() {
-        return name;
+    public double getSalary() {
+        return s;
     }
 
-    @Override
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
+
+    public static void main(String[] args) {
+
+        double c = 100000000.5;
+
+
+
+
+
     }
 }

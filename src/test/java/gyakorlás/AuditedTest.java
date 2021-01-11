@@ -14,14 +14,6 @@ class AuditedTest {
     public void testFind () {
 
 
-        List<Audited> values = new ArrayList<>();
-        values.add(new Employee("John Doe", LocalDateTime.of(2019, 1, 1, 10, 00)));
-        values.add(new Employee("Jane Doe", LocalDateTime.of(2019, 2, 1, 10, 00)));
-
-        Audited audited = Audited.findLastCreated(values);
-
-        assertEquals("Jane Doe", ((Employee)audited).getName());
-
 
 
 

@@ -4,6 +4,8 @@ import java.util.Arrays;
 
 public class Gyakok {
 
+
+
     private EnumGyak enumGyak;
 
     public Gyakok(EnumGyak enumGyak) {

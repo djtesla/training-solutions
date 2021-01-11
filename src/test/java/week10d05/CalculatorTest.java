@@ -13,7 +13,7 @@ class CalculatorTest {
 
         Calculator calculator = new Calculator();
 
-        System.out.println(calculator.findMinSum(new int[] {4,2,9,4,15}));
+        System.out.println(calculator.findMinSum(new int[] {4,2,9,4,64,15,-1, 20}));
 
 
     }
