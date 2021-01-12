@@ -6,6 +6,7 @@ public class Car {
     private double fuel;
     private double tankCapacity;
 
+
     public Car(double fuelRate, double fuel, double tankCapacity) {
 
         if (fuel > tankCapacity) {
