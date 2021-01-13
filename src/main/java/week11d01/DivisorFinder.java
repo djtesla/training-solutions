@@ -13,12 +13,13 @@ public class DivisorFinder {
 
         for (int i = 0; i < numberStr.length(); i++) {
 
+            int digit = Integer.parseInt(Character.toString(numberStr.charAt(i)));
 
-            if (Integer.parseInt(String.valueOf(numberStr.charAt(i))) == 0) {
+            if (digit == 0) {
                 System.out.println("Hamiskodsz, 0 van a számjegyek között, amivel nem osztunk! De azért nézem a számokat tovább!");
                 continue;
             }
-            if (n %  Integer.parseInt(String.valueOf(numberStr.charAt(i))) == 0) {
+            if (n % Integer.parseInt(String.valueOf(numberStr.charAt(i))) == 0) {
                 sum += 1;
             }
         }

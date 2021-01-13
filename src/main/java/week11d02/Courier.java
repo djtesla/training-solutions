@@ -13,40 +13,54 @@ public class Courier {
 
     public void addRide(Ride rideToBeAdded) {
 
+
         if (rides.size() == 0) {
 
-            rides.add(rideToBeAdded);
-            return;
+            if (rideToBeAdded.getIndexOfRide() == 1) {
+                rides.add(rideToBeAdded);
+            } else {
+                throw new IllegalArgumentException("First ride on list must be with index 1");
+            }
 
-        }
+        } else {
+            if (rideToBeAdded.getWeekDay() < rides.get(rides.size() - 1).getWeekDay()) {
+                throw new IllegalArgumentException("The day of the ride to be added cannot be before the day of last ride");
+            } else {
+                if (rideToBeAdded.getWeekDay() == rides.get(rides.size() - 1).getWeekDay() &&
+                        rideToBeAdded.getIndexOfRide() != rides.get(rides.size() - 1).getIndexOfRide() + 1) {
+                    throw new IllegalArgumentException("Ride on the same day must be the next in order");
 
-        if (rideToBeAdded.getWeekDay() < rides.get(rides.size() - 1).getWeekDay()) {
-            throw new IllegalArgumentException("Ride to be added was earlier then last ride");
-        }
-
-        if (rideToBeAdded.getIndexOfRide() <= rides.get(rides.size() - 1).getIndexOfRide()) {
-            throw new IllegalArgumentException("Ride to be added was earlier then last ride");
-        }
-
-        rides.add(rideToBeAdded);
-    }
-
-    public int getDayOfNoWork() {
-
-        int[] weekdays = new int[7];
-        for (Ride ride : rides) {
-            weekdays[ride.getWeekDay() - 1] += 1;
-        }
-
-        for (int i = 0; i < weekdays.length; i++) {
-            if (weekdays[i] == 0) {
-                return i + 1;
+                } else if (rideToBeAdded.getWeekDay() == rides.get(rides.size() - 1).getWeekDay() &&
+                        rideToBeAdded.getIndexOfRide() == rides.get(rides.size() - 1).getIndexOfRide() + 1) {
+                    rides.add(rideToBeAdded);
+                } else {
+                    if (rideToBeAdded.getWeekDay() > rides.get(rides.size() - 1).getWeekDay() &&
+                            rideToBeAdded.getIndexOfRide() == 1) {
+                        rides.add(rideToBeAdded);
+                    } else {
+                        throw new IllegalArgumentException("First ride on the day must be with index 1");
+                    }
+                }
             }
         }
-        return -1;
     }
 
-}
+        public int getDayOfNoWork () {
+
+            int[] weekdays = new int[7];
+            for (Ride ride : rides) {
+                weekdays[ride.getWeekDay() - 1] += 1;
+            }
+
+            for (int i = 0; i < weekdays.length; i++) {
+                if (weekdays[i] == 0) {
+                    return i + 1;
+                }
+            }
+            return -1;
+        }
+
+    }
 
 
 
