@@ -1,6 +1,10 @@
 package exceptions.faults;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -8,39 +12,96 @@ public class FaultList {
 
     public List<String> processLines(List<String> lines) {
 
-
-        Scanner scanner = null;
-        Scanner scanner2 = null;
-
-        for (String line : lines) {
-            scanner = new Scanner(line.trim()).useDelimiter(",");
-
-            while (scanner.hasNext()) {
-
-                int rank = Integer.parseInt(scanner.next());
-                double measure = Double.parseDouble(scanner.next());
-
-                String dateString = scanner.next();
-
-                scanner2 = new Scanner(dateString.trim()).useDelimiter(".");
-                System.out.println(dateString);
-
-                int year = Integer.parseInt(scanner2.next());
-                int month = Integer.parseInt(scanner2.next());
-                int day = Integer.parseInt(scanner2.next());
-
-                LocalDate date = LocalDate.of(year, month, day);
-
-
-            }
-
+        if (isEmpty(lines)) {
+            throw new IllegalArgumentException("lines is null or empty");
         }
 
+        List<String> results = new ArrayList<>();
 
-        return null;
+        ProcessingResult result = ProcessingResult.NO_ERROR;
+        int index = 0;
+
+
+        for (String line : lines) {
+            String[] measureData = line.trim().split(",");
+            index = readIndex(measureData[0]);
+
+            if (index != -1) {
+
+
+                if (measureData.length == 3 && isValueValid(measureData[1]) && IsValidDate(measureData[2])) {
+                    continue;
+                }
+
+                if (measureData.length != 3) {
+                    result = ProcessingResult.WORD_COUNT_ERROR;
+                }
+
+                if (!isValueValid(measureData[1])) {
+                    result = ProcessingResult.VALUE_ERROR;
+                }
+
+                if (!IsValidDate(measureData[2])) {
+                    result = ProcessingResult.DATE_ERROR;
+                }
+
+                if (!IsValidDate(measureData[2]) && !isValueValid(measureData[1])) {
+                    result = ProcessingResult.VALUE_AND_DATE_ERROR;
+                }
+
+                results.add("" + index + "," + result.getCode());
+            }
+        }
+
+        return results;
+    }
+
+
+    public int readIndex(String element1) {
+        int index = 0;
+        try {
+            index = Integer.parseInt(element1);
+        } catch (NumberFormatException nfe) {
+            return -1;
+        }
+        return index;
+    }
+
+
+    public boolean isValueValid(String element2) {
+
+        try {
+            Double.parseDouble(element2);
+
+        } catch (NumberFormatException nfe) {
+            return false;
+
+        }
+        return true;
+    }
+
+
+    private boolean IsValidDate(String word) {
+        try {
+            DateFormat df = new SimpleDateFormat("yyyy.MM.dd.");
+            df.parse(word);
+            return true;
+        } catch (ParseException ex) {
+            return false;
+        }
+    }
+
+        //LocalDate dateOfMeasure = LocalDate.of(year, month, day);
+
+
+
+    public boolean isEmpty(List<String> lines) {
+        return lines == null || lines.size() == 0;
     }
 
 }
+
+
 
 
    /* Bemeneti adatok ellenőrzése példa

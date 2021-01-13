@@ -13,23 +13,17 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class FaultListTest {
 
     private static final List<String> INPUT = Arrays.asList(
-            "1,12.4,1998.04.12.");
-            /*"2,12.4,1998.04.12.,a",
-            "a,12.4,1998.04.12.",
-            "3,12a.4,1998.04.12.",
-            "4,12.4,1998.12.1.",
-            "5,12.4,1998.04.3a.",
-            "a1,12a.4,1998.04.12.",
-            "6,12a.4,1998.04a.12.");*/
+            "a1,12.4,1998.04.12.",
+            "2,12.4,1998.04.12.,a",
+                    "a,12.4,1998.04.12.",
+                    "3,12a.4,1998.04.12.",
+                    "4,12.4,1998.12.1.",
+                    "5,12.4,1998.04.3a.",
+                    "a1,12a.4,1998.04.12.",
+                    "6,12a.4,1998.04a.12.");
 
 
-    @Test
-    public void myTest () {
-    FaultList faultList = new FaultList();
-    faultList.processLines(INPUT);
-    }
-}
-    /*@Test
+     @Test
     public void processingNullParamShouldThrowException() throws Exception {
         assertThrows(IllegalArgumentException.class, () -> new FaultList().processLines(null));
     }
@@ -45,7 +39,8 @@ public class FaultListTest {
         expected.add("5," + ProcessingResult.DATE_ERROR.getCode());
         expected.add("6," + ProcessingResult.VALUE_AND_DATE_ERROR.getCode());
 
-        assertEquals(expected, faults);
+       assertEquals(expected, faults);
     }
 
-}*/
+}
+
