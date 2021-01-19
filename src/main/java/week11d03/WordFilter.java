@@ -18,7 +18,19 @@ public class WordFilter {
                 wordsWithChar.add(word);
             }
         }
+        return wordsWithChar;
+    }
 
+
+    public List<String> wordsWithChar2(List<String> words, char c) {
+
+        List<String> wordsWithChar = new ArrayList<>();
+
+        for (String word : words) {
+            if (word.indexOf(c) > -1) {
+                wordsWithChar.add(word);
+            }
+        }
         return wordsWithChar;
     }
 }

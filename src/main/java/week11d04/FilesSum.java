@@ -3,6 +3,7 @@ package week11d04;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 
 public class FilesSum {
 
@@ -12,6 +13,7 @@ public class FilesSum {
         int sum = 0;
 
         for (int i = 0; i < 100; i++) {
+
             String fileName = getFileName(i);
 
             if (Files.isRegularFile(Path.of(fileName))) {
@@ -26,32 +28,44 @@ public class FilesSum {
 
     public String getFileName (int i) {
 
-        String fileName = "";
+
+
+        /*String fileName = "number";
 
         if (i < 10) {
-            fileName = "0" + i;
+            fileName += "0" + i;
         } else {
-            fileName = Integer.toString(i);
+            fileName += Integer.toString(i);
         }
 
-        return fileName;
+        return fileName + ".txt";*/
+        return "number" + (i < 10 ? "0" + i: i) + ".txt";
+    //return String.format("number%02d.txt", i);
     }
 
 
 
     public int readFromFile(String fileName) {
-        int content = 0;
+
+        int content;
+
         try {
             content = Integer.parseInt(Files.readString(Path.of(fileName)));
 
-        } catch (IOException e) {
-            throw new IllegalArgumentException("", e);
-        } catch (NumberFormatException nfe) {
-            throw new IllegalArgumentException("", nfe);
+        } catch (IOException | NumberFormatException e ) {
+            throw new IllegalArgumentException("Invalid data", e);
         }
 
         return content;
     }
+
+
+    public static void main(String[] args) {
+
+
+        System.out.println(new FilesSum().sumNumbers());
+    }
+
 
 }
 

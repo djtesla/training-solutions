@@ -33,26 +33,28 @@ public class Street {
     }
 
 
-
     public List<FenceStat> getFenceStats() {
 
         List<FenceStat> fenceStats = new ArrayList<>();
 
         for (Fence fence : Fence.values()) {
-            fenceStats.add(new FenceStat(fence, 0));
+            fenceStats.add(new FenceStat(fence, getFenceStatNumber(fence)));
         }
-
-        for (int i = 0; i < fenceStats.size(); i++) {
-
-            for (Site site: sites) {
-                if (site.getFence() == fenceStats.get(i).getFence()) {
-                    fenceStats.get(i).setNumber();
-                }
-            }
-        }
-        return  fenceStats;
+        return fenceStats;
     }
 
+
+    public int getFenceStatNumber(Fence fence) {
+
+        int number = 0;
+
+        for (Site site : sites) {
+            if (site.getFence() == fence) {
+                number++;
+            }
+        }
+        return number;
+    }
 
 
     @Override

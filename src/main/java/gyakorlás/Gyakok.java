@@ -1,9 +1,12 @@
 package gyakorlás;
 
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Arrays;
 
 public class Gyakok {
-
 
 
     private EnumGyak enumGyak;
@@ -22,42 +25,42 @@ public class Gyakok {
         return age;
     }
 
-    public void count () {
+    public void count() {
 
-    int [][] tombs = new int[2][];
-    tombs[0] = new int[3];
-    tombs[1] = new int[2];
-    tombs[2] = new int[1];
+        int[][] tombs = new int[2][];
+        tombs[0] = new int[3];
+        tombs[1] = new int[2];
+        tombs[2] = new int[1];
 
 
-    for (int i = 0; i < tombs.length; i++) {
+        for (int i = 0; i < tombs.length; i++) {
 
-        for (int j = 0; j < tombs[i].length; j ++) {
+            for (int j = 0; j < tombs[i].length; j++) {
 
-            tombs[i][j] = 1;
-                }
+                tombs[i][j] = 1;
+            }
 
-        System.out.print(Arrays.toString(tombs[i]));
+            System.out.print(Arrays.toString(tombs[i]));
         }
     }
 
-    public String getTypeOfDayWithSwitchStatement(String dayOfWeekArg){
+    public String getTypeOfDayWithSwitchStatement(String dayOfWeekArg) {
         String typeOfDay;
-        switch(dayOfWeekArg){
+        switch (dayOfWeekArg) {
             case "Monday":
-                typeOfDay="Start of the work week";
+                typeOfDay = "Start of the work week";
                 break;
             case "Tuesday":
             case "Wednesday":
             case "Thursday":
-                typeOfDay="Midweek";
+                typeOfDay = "Midweek";
                 break;
             case "Friday":
-                typeOfDay="End of work week";
+                typeOfDay = "End of work week";
                 break;
             case "Saturday":
             case "Sunday":
-                typeOfDay="Weekend";
+                typeOfDay = "Weekend";
                 break;
             default:
                 throw new IllegalArgumentException("Unknown day");
@@ -66,4 +69,18 @@ public class Gyakok {
         return typeOfDay;
 
     }
+
+
+    public static void main(String[] args) {
+
+        Path file = Path.of("employees.txt");
+        try {
+            String employees = Files.readString(file);
+            System.out.println(employees);
+        } catch (IOException ioe) {
+            throw new IllegalStateException("Can not read file", ioe);
+        }
+
+    }
+
 }
