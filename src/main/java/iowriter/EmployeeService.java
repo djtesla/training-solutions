@@ -5,26 +5,34 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 public class EmployeeService {
 
-    public static void main(String[] args) {
+    public  void writeEmployeesToFile(List<String> employees, Path file) {
 
 
+        try(BufferedWriter writer = Files.newBufferedWriter(file)) {
 
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(EmployeeService.class.getResourceAsStream("/employees.txt")))) {
+            for (String employee : employees) {
+                writer.write(employee + "\n");
 
-            String line;
-
-            while ((line = reader.readLine()) != null) {
-
-                System.out.println(line);
             }
 
         } catch (IOException ioe) {
-            throw new IllegalStateException("Can not write file", ioe);
+            throw new IllegalStateException("Cannot write file", ioe);
         }
+
+
+
+
+
+
     }
+
+
+
 
 
 }
