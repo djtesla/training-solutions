@@ -1,4 +1,4 @@
-package week02;
+package meetingrooms;
 
 import java.util.Scanner;
 
@@ -8,7 +8,7 @@ public class Controller {
     public static String runMode = "Yes";
     public static String empty = "";
 
-    Office office;
+    public Office office;
 
 
     public void readOffice() {

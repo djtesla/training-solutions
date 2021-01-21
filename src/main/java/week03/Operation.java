@@ -1,7 +1,5 @@
 package week03;
 
-import week02.Office;
-
 public class Operation {
 
 private int leftValue;
