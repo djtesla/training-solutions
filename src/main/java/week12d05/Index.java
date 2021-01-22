@@ -2,6 +2,7 @@ package week12d05;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class Index {
@@ -12,15 +13,16 @@ public class Index {
         int sum = 0;
         String word = "koronavírus";
 
+
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(
                 Index.class.getResourceAsStream("/index.html")))) {
             String line;
             while ((line = reader.readLine()) != null) {
-                if (line.contains(word)) {
+                if (line.toLowerCase().contains(word)) {
                     sum+=1;
                 }
             }
-        } catch (IOException ioe) {
+        } catch (IOException | NullPointerException ioe) {
             throw new IllegalStateException("Can not read file", ioe);
         }
 
