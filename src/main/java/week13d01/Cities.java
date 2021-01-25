@@ -9,31 +9,28 @@ import java.nio.file.Path;
 public class Cities {
 
 
-    public String getLongestCityName(String fileName) {
+    public String getLongestCityName(BufferedReader reader) {
 
         String longest = null;
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(
-                this.getClass().getResourceAsStream("/" + fileName)))) {
 
             String line;
 
-
             int mostChars = 0;
-            while ((line = reader.readLine()) != null) {
+            try {
+                while ((line = reader.readLine()) != null) {
+                    String[] lineData = line.split(";");
 
-                String[] lineData = line.split(";");
-
-                if (lineData[1].length() > mostChars) {
-                    mostChars = lineData[1].length();
-                    longest = lineData[1];
+                    if (lineData[1].length() > mostChars) {
+                        mostChars = lineData[1].length();
+                        longest = lineData[1];
+                    }
                 }
+
+            } catch (IOException ioe) {
+                throw new IllegalStateException("Cannot read file", ioe);
             }
-        } catch (IOException ioe) {
-            throw new IllegalStateException("Cannot read file");
-        }
 
-
-        return longest;
+            return longest;
     }
 
 }
