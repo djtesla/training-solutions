@@ -17,4 +17,7 @@ public class Result {
     public int getIndex() {
         return index;
     }
+
+
+
 }
