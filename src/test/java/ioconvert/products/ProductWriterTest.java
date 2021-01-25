@@ -3,6 +3,7 @@ package ioconvert.products;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -30,7 +31,7 @@ public class ProductWriterTest {
 
         ProductWriter writer = new ProductWriter();
 
-        try (OutputStream os = Files.newOutputStream(path)) {
+        try (BufferedOutputStream os = new BufferedOutputStream(Files.newOutputStream(path))) {
             writer.saveProduct(os, products);
         }
 
