@@ -22,6 +22,7 @@ class AirportTest {
         System.out.println(airport.getFlightListByCityAndFlightInformation(flights, FlightInformation.ARRIVAL, "Dublin"));
 
         System.out.println(airport.getFlightWithEarliestDeparture(flights));
+
     }
 
 }

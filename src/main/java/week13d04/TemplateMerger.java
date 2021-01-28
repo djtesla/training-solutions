@@ -15,29 +15,26 @@ public class TemplateMerger {
         } catch (IOException ioe) {
             throw new IllegalStateException("Cannot read file", ioe);
         }
-
-        String[] templateData = templateLine.split(",");
-        String[] element1 = templateData[0].split(":");
-        String[] element2 = templateData[1].split(":");
-
-        String nameComment = element1[0];
-        String birthComment = element2[0];
-
-        StringBuilder sb = new StringBuilder();
-
-        for (Employee employee : employees) {
-
-            sb.append(nameComment + " ");
-            sb.append(employee.getName());
-            sb.append(birthComment + " ");
-            sb.append(Integer.toString(employee.getYearOfBirth()) + "\n");
-        }
-
-        return sb.toString();
+        return createString(templateLine, employees);
     }
 
 
-}
+
+    public String createString(String templateLine, List<Employee> employees) {
+            StringBuilder sb = new StringBuilder();
+            for (Employee employee : employees) {
+                String name = employee.getName();
+                String year = Integer.toString(employee.getYearOfBirth());
+                sb.append(templateLine.replace("{nev}", name).replace("{ev}", year));
+                sb.append("\n");
+            }
+            return sb.toString();
+        }
+
+    }
+
+
+
 
 
 /*    Mai junior feladat:

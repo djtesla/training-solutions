@@ -1,6 +1,7 @@
 package week04;
 
 import org.junit.jupiter.api.Test;
+import week04d02.NameChanger;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -11,26 +11,43 @@ public class Cities {
 
     public String getLongestCityName(BufferedReader reader) {
 
-        String longest = null;
+        try {
+            skipLine(reader);
+            return getMaxLengthCity(reader);
+        } catch (IOException ioe) {
+            throw new IllegalStateException("Cannot read file", ioe);
+        }
 
-            String line;
-
-            int mostChars = 0;
-            try {
-                while ((line = reader.readLine()) != null) {
-                    String[] lineData = line.split(";");
-
-                    if (lineData[1].length() > mostChars) {
-                        mostChars = lineData[1].length();
-                        longest = lineData[1];
-                    }
-                }
-
-            } catch (IOException ioe) {
-                throw new IllegalStateException("Cannot read file", ioe);
-            }
-
-            return longest;
     }
+
+
+    private void skipLine(BufferedReader reader) throws IOException {
+        reader.readLine();
+    }
+
+
+    private String splitLine(String line) throws IOException {
+        String[] lineData = line.split(";");
+
+        if (lineData.length > 1) {
+        return lineData[1];
+    }
+            throw new IOException("wrong line, " + line);
+        }
+
+
+
+    private String getMaxLengthCity(BufferedReader reader) throws IOException {
+        String maxLengthCity = "";
+        String line;
+        while ((line = reader.readLine()) != null) {
+            String city = splitLine(line);
+            if (city.length() > maxLengthCity.length()) {
+                maxLengthCity = city;
+            }
+        }
+        return maxLengthCity;
+    }
+
 
 }

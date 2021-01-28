@@ -107,6 +107,7 @@ public class Airport {
 
 
     public Flight getFlightWithEarliestDeparture (List<Flight> flights) {
+
         Flight earliest = getFirstFlightWithFlightInformation(flights, FlightInformation.DEPARTURE);
         for (Flight flight : flights) {
             if (flight.getFlightInformation() == FlightInformation.DEPARTURE) {
@@ -128,8 +129,6 @@ public class Airport {
         }
         throw new IllegalArgumentException("No flight exists with given Flight information");
     }
-
-
 
 
 }
