@@ -83,25 +83,9 @@ public class OnlineShop {
 
 
     public int getNumberOfProductPerName(String name) {
-
-        int count = 0;
-        for (ShoppingList shoppingList : shoppingLists) {
-            count += getNumberPerList(shoppingList, name);
-        }
-        return count;
+        return getStatistics().get(name);
     }
 
-
-    private int getNumberPerList(ShoppingList shoppingList, String name) {
-
-        int count = 0;
-        for (String nameFocused : shoppingList.getProducts()) {
-            if (nameFocused.equals(name)) {
-                count += 1;
-            }
-        }
-        return count;
-    }
 
 
     public int getNumberOfProductTypesPerRegNumber(String regNumber) {
@@ -113,13 +97,13 @@ public class OnlineShop {
     }
 
 
-    public String getStatistics() {
+    public Map<String, Integer> getStatistics() {
 
         Map<String, Integer> statistics = new TreeMap<>();
         for (ShoppingList shoppingList : shoppingLists) {
             setValues(statistics, shoppingList);
         }
-        return statistics.toString();
+        return statistics;
     }
 
 
