@@ -20,7 +20,7 @@ public class MailBox {
         String[] criteriaArr = criteria.split(":");
         if (criteriaArr.length == 1) {
             return getMailsPerOtherCase(criteria);
-        } else if (criteriaArr[0] == "from") {
+        } else if ("from".equals(criteriaArr[0])) {
             return getMailsPerFrom(criteriaArr[1]);
         } else {
             return getMailsPerTo(criteriaArr[1]);
@@ -28,13 +28,13 @@ public class MailBox {
     }
 
     private List<Mail> getMailsPerTo(String text) {
-            List<Mail> selectedMails = new ArrayList<>();
-            for (Mail mail : mails) {
-                if (hasContactListText(mail, text)) {
-                    selectedMails.add(mail);
-                }
+        List<Mail> selectedMails = new ArrayList<>();
+        for (Mail mail : mails) {
+            if (hasContactListText(mail, text)) {
+                selectedMails.add(mail);
             }
-            return selectedMails;
+        }
+        return selectedMails;
     }
 
 
@@ -53,7 +53,7 @@ public class MailBox {
         List<Mail> selectedMails = new ArrayList<>();
         for (Mail mail : mails) {
             if (mail.getFrom().getName().equals(text) ||
-                    mail.getFrom().getEmail().contains(text)) {
+                    mail.getFrom().getEmail().equals(text)) {
                 selectedMails.add(mail);
             }
         }
