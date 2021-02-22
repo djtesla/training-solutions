@@ -3,6 +3,30 @@ package exam03retake01;
 public class CdvCheck {
 
 
+    public boolean check(String taxNumber) {
+        if (taxNumber.length() != 10) {
+            throw new IllegalArgumentException ("Tax number must be 10 digit long");
+        }
+        int sum = 0;
+        for (int i = 0; i < taxNumber.length()-1; i++) {
+            int digit = getNumericValueOfChar(taxNumber.charAt(i));
+            sum += digit * (i + 1);
+        }
+        int lastDigit = getNumericValueOfChar(taxNumber.charAt(9));
+        return sum % 11 == lastDigit;
+    }
+
+
+    private int getNumericValueOfChar(char c) {
+        int digit;
+        try {
+            digit = Integer.parseInt(String.valueOf(c));
+        } catch (NumberFormatException nfe) {
+            throw new IllegalArgumentException("Tax number contains invalid character");
+        }
+        return digit;
+    }
+
 
 
 }
