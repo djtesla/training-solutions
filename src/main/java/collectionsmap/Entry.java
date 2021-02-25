@@ -15,4 +15,15 @@ public class Entry {
     }
 
 
+    public String getIpAddress() {
+        return ipAddress;
+    }
+
+    public LocalDate getEntryDate() {
+        return entryDate;
+    }
+
+    public String getLogin() {
+        return login;
+    }
 }

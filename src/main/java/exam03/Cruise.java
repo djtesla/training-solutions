@@ -10,6 +10,7 @@ public class Cruise {
     private double basicPrice;
     private List<Passenger> passengers = new ArrayList<>();
 
+
     public Cruise(Boat boat, LocalDate sailing, double basicPrice) {
         this.boat = boat;
         this.sailing = sailing;
@@ -53,7 +54,7 @@ public class Cruise {
                 return passenger;
             }
         }
-        throw new IllegalArgumentException("No passenger exists with givne name");
+        throw new IllegalArgumentException("No passenger exists with given name");
     }
 
 

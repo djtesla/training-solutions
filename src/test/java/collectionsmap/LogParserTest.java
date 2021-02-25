@@ -1,5 +1,6 @@
 package collectionsmap;
 
+
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -12,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class LogParserTest {
 
-/*    @Test
+    @Test
     public void faultyLogShouldThrowException() {
 
         String log = "invalid_log_format";
@@ -50,5 +51,5 @@ public class LogParserTest {
         assertEquals("derzsi", entries.get("176.121.45.124").get(0).getLogin());
         assertEquals("176.121.45.124", entries.get("176.121.45.124").get(0).getIpAddress());
         assertEquals(LocalDate.of(2016, 12, 2), entries.get("176.121.45.124").get(0).getEntryDate());
-    }*/
+    }
 }

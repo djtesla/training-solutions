@@ -7,7 +7,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-/*public class MailBoxTest {
+public class MailBoxTest {
 
     MailBox mailBox = new MailBox();
 
@@ -46,6 +46,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
         assertEquals("Rerere!", mails.get(3).getMessage());
     }
 
+
     @Test
     void findFrom() {
         List<Mail> mails =  mailBox.findByCriteria("from:johndoe@example.com");
@@ -73,4 +74,4 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
     }
 }
-*/
+

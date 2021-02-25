@@ -1,0 +1,1 @@
+create table activities(id bigint auto_increment, start_time TIMESTAMP, activity_desc VARCHAR(255), activity_type VARCHAR(255), constraint activities primary key(id));

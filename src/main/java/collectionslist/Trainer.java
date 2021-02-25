@@ -33,35 +33,21 @@ public class Trainer {
     }
 
     public static void main(String[] args) {
-
         List<String> names = new LinkedList<>();
-
         Collection c = names;
-
         c.add("Géza");
         c.add("Miki");
         c.add("Géza");
         c.add("Miki");
-
-
         names.add(1, "Béci");
-
         names.remove(1);
         names.set(3, "Brenő");
-
-
         Set<Trainer> trainers = new LinkedHashSet<>();
-
-
         trainers.add(new Trainer("Géza"));
         trainers.add(new Trainer("Béci"));
         trainers.add(new Trainer("Jóska"));
         trainers.add(new Trainer("Manó"));
         trainers.add(null);
-
         System.out.println(trainers);
-
-
-
     }
 }

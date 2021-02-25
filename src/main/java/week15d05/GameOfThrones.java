@@ -6,12 +6,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 
-public class GameOfThrones {
+public class GameOfThrones{
 
 
     public Map.Entry<String, Integer> getHouseWithMostBattles(String file) {
         Map<String, Integer> battleMap = createBattleMap(file);
-
         Map.Entry<String, Integer> houseWithMostBattles = null;
         for (Map.Entry<String, Integer> entry : battleMap.entrySet()) {
             if (entry.getKey().trim().equals("")) {
@@ -44,6 +43,8 @@ public class GameOfThrones {
         } catch (IOException ioe) {
             throw new IllegalStateException("Cannot read file, ioe");
         }
+
+        System.out.println(battleMap);
         return battleMap;
 
     }
@@ -53,7 +54,7 @@ public class GameOfThrones {
     private void putNewEntry(Map<String, Integer> battleMap, List<String> fighters) {
         for (String fighter : fighters) {
             if (!battleMap.containsKey(fighter)) {
-                battleMap.put(fighter, 1);
+                battleMap.put(fighter, 0);
             }
             battleMap.put(fighter, battleMap.get(fighter) + 1);
         }

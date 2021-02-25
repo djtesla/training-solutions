@@ -15,6 +15,6 @@ class GameOfThronesTest {
         Map.Entry<String, Integer> houseWithMostBattles = gof.getHouseWithMostBattles("battles.txt");
 
         assertEquals(houseWithMostBattles.getKey(), "Lannister");
-        assertEquals(houseWithMostBattles.getValue(), 19);
+        assertEquals(houseWithMostBattles.getValue(), 18);
     }
 }

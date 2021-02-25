@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CdvCheckTest {
-/*
+
     @Test
     void check() {
         assertTrue(new CdvCheck().check("8365670003"));
@@ -19,5 +19,5 @@ class CdvCheckTest {
 
         assertThrows(IllegalArgumentException.class,
                 () -> new CdvCheck().check("12345a7890"));
-    }*/
+    }
 }

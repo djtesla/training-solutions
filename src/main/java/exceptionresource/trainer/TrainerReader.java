@@ -46,4 +46,8 @@ public class TrainerReader {
 
     }
 
+    public static void main(String[] args) {
+
+    }
+
 }

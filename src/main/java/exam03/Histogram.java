@@ -9,14 +9,14 @@ public class Histogram {
         StringBuilder stars = new StringBuilder();
         String line;
         try {
-        while ((line = reader.readLine()) != null) {
-            int numberOfStarsPerLine = Integer.parseInt(line);
-            stars.append("*".repeat(numberOfStarsPerLine));
-            stars.append('\n');
-        }
+            while ((line = reader.readLine()) != null) {
+                int numberOfStarsPerLine = Integer.parseInt(line);
+                stars.append("*".repeat(numberOfStarsPerLine));
+                stars.append('\n');
+            }
         } catch (IOException ioe) {
             throw new IllegalStateException("Cannot read file", ioe);
-            }
+        }
         return stars.toString();
     }
 }

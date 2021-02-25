@@ -14,7 +14,6 @@ public class Secret {
 
         try {
             byte[] bytes = Files.readAllBytes(path);
-
                 for (byte b : bytes) {
                     char c = (char) (b + 10);
                     sb.append(sb);
