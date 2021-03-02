@@ -1,0 +1,1 @@
+create table employees(id bigint auto_increment, emp_name VARCHAR(255), constraint employees primary key(id));

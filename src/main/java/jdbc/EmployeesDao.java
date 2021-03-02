@@ -13,12 +13,51 @@ public class EmployeesDao {
         this.dataSource = dataSource;
     }
 
-    public void createEmployee(String name) {
+
+    public long createEmployee(String name) {
         try (
                 Connection conn = dataSource.getConnection();
-                PreparedStatement stmt = conn.prepareStatement("insert into employees(emp_name) values (?)")) {
+                PreparedStatement stmt = conn.prepareStatement("insert into employees(emp_name) values (?)", Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, name);
             stmt.executeUpdate();
+            return executeAnsGetGeneratedKey(stmt);
+        } catch (SQLException se) {
+            throw new IllegalStateException("Cannot insert", se);
+        }
+    }
+
+
+    public void createEmployees(List<String> names) {
+        try (Connection conn = dataSource.getConnection()) {
+            conn.setAutoCommit(false);
+            try (PreparedStatement stmt = conn.prepareStatement("insert into employees(emp_name) values (?)")) {
+                for (String name : names) {
+                    if (name.startsWith("x")) {
+                        throw new IllegalArgumentException("");
+                    }
+                    stmt.setString(1, name);
+                    stmt.executeUpdate();
+                }
+                conn.commit();
+            } catch (IllegalArgumentException iae) {
+                conn.rollback();
+            }
+        } catch (SQLException se) {
+            throw new IllegalStateException("Cannot insert", se);
+        }
+    }
+
+
+
+
+    private long executeAnsGetGeneratedKey(PreparedStatement stmt) {
+        try (
+                ResultSet rs = stmt.getGeneratedKeys()) {
+            if (rs.next()) {
+                return rs.getLong(1);
+            } else {
+                throw new SQLException("No key has been generated");
+            }
         } catch (SQLException se) {
             throw new IllegalStateException("Cannot insert", se);
         }

@@ -9,6 +9,8 @@ import org.mariadb.jdbc.MariaDbDataSource;
 import javax.sql.DataSource;
 
 import java.sql.SQLException;
+import java.util.Collections;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -40,7 +42,28 @@ public class EmployeesDaoTest {
     @Test
     public void testInsert() {
         employeesDao.createEmployee("Joci");
+        assertEquals("[Joci]", employeesDao.listEmployeeNames().toString());
+    }
 
+    @Test
+    public void testQueryId() {
+        employeesDao.createEmployee("Jane Doe");
+        long id = employeesDao.createEmployee("Joci");
+        employeesDao.createEmployee("Jack Doe");
+        assertEquals("Joci", employeesDao.findEmployeeById(id));
+    }
+
+    @Test
+    public void testCreateEmployees() {
+        employeesDao.createEmployees(List.of("Gábor", "Áron", "Rézfaszú Bagoly"));
+        assertEquals(List.of("Gábor", "Áron", "Rézfaszú Bagoly"), employeesDao.listEmployeeNames());
+    }
+
+
+    @Test
+    public void testCreateEmployeesWithException() {
+        employeesDao.createEmployees(List.of("Gábor", "Áron", "xRézfaszú Bagoly"));
+        assertEquals(Collections.emptyList(), employeesDao.listEmployeeNames());
     }
 
 

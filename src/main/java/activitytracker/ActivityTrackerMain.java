@@ -32,7 +32,7 @@ public class ActivityTrackerMain {
             throw new IllegalStateException("Cannot create database", se);
         }
 
-        Activity activity1 = new Activity(LocalDateTime.of(2021, 02, 23, 10, 20), "Biking in Mátra", ActivityType.BIKING);
+       /* Activity activity1 = new Activity(LocalDateTime.of(2021, 02, 23, 10, 20), "Biking in Mátra", ActivityType.BIKING);
         Activity activity2 = new Activity(LocalDateTime.of(2021, 02, 23, 11, 20), "Running in Mátra", ActivityType.RUNNING);
         Activity activity3 = new Activity(LocalDateTime.of(2021, 02, 23, 12, 20), "Hiking in Mátra", ActivityType.HIKING);
 
@@ -44,5 +44,7 @@ public class ActivityTrackerMain {
 
         System.out.println(activityDao.findActivityById(2));
         System.out.println(activityDao.listActivities());
+    */
     }
+
 }
