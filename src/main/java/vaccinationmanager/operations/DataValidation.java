@@ -1,4 +1,9 @@
-package vaccinationmanager.userinterface;
+package vaccinationmanager.operations;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class DataValidation {
 
@@ -46,7 +51,9 @@ public class DataValidation {
         return false;
     }
 
-    public boolean isValidSecondEmail (String first, String second) {
+
+
+    public boolean isValidSecondEmail(String first, String second) {
         if (first.equals(second)) {
             return true;
         }
@@ -55,9 +62,9 @@ public class DataValidation {
     }
 
 
-    public boolean isValidSocSecNumber(String socSecNumber) {
 
-        return false;
+    public boolean isValidSocSecNumber(String socSecNumber) {
+        return socSecNumber.length() == 9;
     }
 
 
@@ -65,12 +72,26 @@ public class DataValidation {
     public boolean checkIfExit(String text) {
         try {
             if (Integer.parseInt(text) == 7) {
-                throw new ExitException("Kilépett. Futás vége");
+                throw new ExitDuringDataInputException();
             }
         } catch (NumberFormatException nfe) {
             // nem hiba! Stringre mehet tovább a futás
         }
         return false;
+    }
+
+
+    public boolean isValidVaccinesType(String vaccinesType) {
+        VaccineType[]vaccineTypes = VaccineType.values();
+        return vaccinesType.indexOf(vaccinesType) > - 1;
+    }
+
+
+
+    public boolean checkIfCanBeVaccinated(Citizen citizen) {
+        return citizen.getNumberOfVaccinations() == 0 ||
+                citizen.getNumberOfVaccinations() == 1 && citizen.getLastVaccination()
+                .isBefore(LocalDateTime.now().minusDays(15));
     }
 
 

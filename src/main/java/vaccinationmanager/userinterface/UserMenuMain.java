@@ -1,17 +1,15 @@
 package vaccinationmanager.userinterface;
 
-import vaccinationmanager.operations.VaccinationOperations;
+import vaccinationmanager.operations.*;
 
-import java.io.Console;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 
 public class UserMenuMain {
 
     public static final Scanner SCANNER = new Scanner(System.in);
 
 
-    public void displayMenu(){
+    public void displayMenu() {
         boolean isFinished = false;
         while (!isFinished) {
             System.out.println('\n' +
@@ -42,13 +40,30 @@ public class UserMenuMain {
                 }
 
             } catch (NumberFormatException nfe) {
-                System.out.println('\n' + "Nem megfelelő bevitel! Kérjük válasszon újra!" + '\n');
-                pauseExecution();
+                System.out.println('\n' + "Nincs ilyen menüpont. A menühöz való visszatéréshez nyomjon ENTER-t." + '\n');
+                SCANNER.nextLine();
+
+            } catch (InvalidMenuInputException ime) {
+                System.out.println('\n' + "Nincs ilyen menüpont. A menühöz való visszatéréshez nyomjon ENTER-t." + '\n');
+                SCANNER.nextLine();
+
+            } catch (InvalidDataInputException ide) {
+                System.out.println('\n' + "Nem megfelelő adatbevitel! A menühöz való visszatéréshez nyomjon ENTER-t." + '\n');
+                SCANNER.nextLine();
+            }
+
+            catch (ExitDuringDataInputException ee) {
+                System.out.println("Kilépett az adatbevitelből. A menühöz való visszatéréshez nyomjon ENTER-t.\"");
+                SCANNER.nextLine();
+            }
+
+            catch (ExitFromApplicationException ee) {
+                System.out.println('\n' + "Kilépett az alkalmazásból.");
+                return;
             }
         }
 
     }
-
 
 
     private void pauseExecution() {
@@ -58,7 +73,6 @@ public class UserMenuMain {
             throw new IllegalStateException("Interrupted", ie);
         }
     }
-
 
 
     private boolean callService(Integer input) {
@@ -91,19 +105,17 @@ public class UserMenuMain {
             }
 
             case 7: {
-                System.out.println('\n' + "Kilépett az alkalmazásból.");
-                return true;
+
+                throw new ExitFromApplicationException();
+
             }
             default: {
-                throw new NumberFormatException();
+                throw new InvalidMenuInputException();
             }
         }
 
 
-
-
-
-    return false;
+        return false;
     }
 
 
