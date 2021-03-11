@@ -46,7 +46,7 @@ public class LottoReader {
 
 
     public static void main(String[] args) {
-        InputStream inputStream = LottoReader.class.getResourceAsStream("/otos.csv");
+        InputStream inputStream = LottoReader.class.getResourceAsStream("otos.csv");
         new LottoReader(inputStream);
     }
 }
