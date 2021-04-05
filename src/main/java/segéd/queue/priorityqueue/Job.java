@@ -1,6 +1,6 @@
-package vizsgafelkészülés04.queue.arraydeque;
+package segéd.queue.priorityqueue;
 
-public class Job {
+public class Job implements  Comparable<Job>{
 
     private int priority; // 1 - 10 skálán osztályozzuk a prioritást
     private String jobDescription;
@@ -17,20 +17,14 @@ public class Job {
         }
     }
 
-    public int getPriority() {
-        return priority;
+    @Override
+    public int compareTo(Job anotherJob) {
+        if (priority == anotherJob.priority) {
+            return jobDescription.compareTo(anotherJob.jobDescription);
+
+        }
+        return priority - anotherJob.priority;
     }
-
-    public String getJobDescription() {
-        return jobDescription;
-    }
-
-    public boolean isUrgent() {
-
-
-        return urgent;
-    }
-
 
     @Override
     public String toString() {

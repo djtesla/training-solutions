@@ -1,13 +1,15 @@
-package activitytracker2;
+package segéd.dao;
 
-import org.mariadb.jdbc.MariaDbDataSource;
+import activitytracker2.Activity;
+import activitytracker2.ActivityType;
+import activitytracker2.IllegalTrackPointException;
+import activitytracker2.TrackPoint;
 
 import javax.sql.DataSource;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -21,7 +23,6 @@ public class ActivityDao {
 
 
     public Activity saveActivity(Activity activity) {
-
         Activity activityWithId;
         try (
                 Connection conn = dataSource.getConnection();

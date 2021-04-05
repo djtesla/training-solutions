@@ -1,4 +1,4 @@
-package vizsgafelkészülés04.queue.arraydeque;
+package segéd.queue.arraydeque;
 
 public class Job {
 
