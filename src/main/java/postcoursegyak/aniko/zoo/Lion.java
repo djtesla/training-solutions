@@ -1,0 +1,8 @@
+package postcoursegyak.aniko.zoo;
+
+public class Lion extends  ZooAnimal{
+
+    public Lion(String name) {
+        super(name);
+    }
+}

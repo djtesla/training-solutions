@@ -1,8 +1,15 @@
 package jdbc;
 
 import javax.sql.DataSource;
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class EmployeesDao {
@@ -46,8 +53,6 @@ public class EmployeesDao {
             throw new IllegalStateException("Cannot insert", se);
         }
     }
-
-
 
 
     private long executeAnsGetGeneratedKey(PreparedStatement stmt) {
@@ -105,6 +110,102 @@ public class EmployeesDao {
         } catch (SQLException se) {
             throw new IllegalStateException("Cannot query", se);
         }
+    }
+
+
+    public List<String> listOddEmployeeNames() {
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement ps = connection.prepareStatement("select emp_name from employees", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+             ResultSet rs = ps.executeQuery()) {
+            return getListOfNamesPerPreparedStatement(rs);
+        } catch (SQLException sqe) {
+            throw new IllegalStateException("Cannot query");
+        }
+
+    }
+
+    private List<String> getListOfNamesPerPreparedStatement(ResultSet rs) throws SQLException {
+        if (!rs.next()) {
+            return Collections.emptyList();
+        }
+        List<String> names = new ArrayList<>();
+        names.add(rs.getString("emp_name"));
+        while (rs.relative(2)) {
+            names.add(rs.getString("emp_name"));
+
+        }
+        return names;
+    }
+
+
+    public void updateMaleNames() {
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement ps = connection.prepareStatement("select id, emp_name from employees", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+             ResultSet rs = ps.executeQuery()) {
+            updateResultSet(rs);
+        } catch (SQLException sqe) {
+            throw new IllegalStateException("Cannot query", sqe);
+        }
+    }
+
+    private void updateResultSet(ResultSet rs) throws SQLException {
+        while (rs.next()) {
+            String name = rs.getString("emp_name");
+            if (name.startsWith("Jane")) {
+            } else {
+                rs.updateString("emp_name", "Mr. " + name);
+                rs.updateRow();
+            }
+        }
+
+
+    }
+
+
+    public void saveImage(String fileName, InputStream image) {
+        try (
+                Connection connection = dataSource.getConnection();
+                PreparedStatement ps = connection.prepareStatement("insert into images (filename, content) values (?,?)")) {
+            ps.setString(1, fileName);
+            Blob blob = connection.createBlob();
+            fillBlob(image, blob);
+            ps.setBlob(2, blob);
+            ps.executeUpdate();
+        } catch (SQLException sqe) {
+            throw new IllegalStateException("Cannot connect", sqe);
+        }
+    }
+
+
+    private void fillBlob(InputStream image, Blob blob) {
+        try (OutputStream os = blob.setBinaryStream(1);
+             BufferedInputStream is = new BufferedInputStream(image)) {
+            is.transferTo(os);
+        } catch (IOException | SQLException e) {
+            throw new IllegalStateException("Error when creating blob", e);
+        }
+    }
+
+    public InputStream getImageByName(String name) {
+        try (
+        Connection connection = dataSource.getConnection();
+        PreparedStatement ps = connection.prepareStatement("select content from images where filename =?") ) {
+            ps.setString(1, name);
+            return readBlob(ps);
+
+
+        } catch (SQLException sqe) {
+            throw new IllegalStateException("Cannot query", sqe);
+        }
+    }
+
+
+    private InputStream readBlob(PreparedStatement ps) throws SQLException {
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            return rs.getBlob("content").getBinaryStream();
+        }
+        throw new IllegalStateException("Not found");
     }
 
 
